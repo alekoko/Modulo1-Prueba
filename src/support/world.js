@@ -1,14 +1,20 @@
 'use strict';
 /**
- * PATRÓN CONTEXT OBJECT + INYECCIÓN DE DEPENDENCIAS
+ * PATRON CONTEXT OBJECT + INYECCIÓN DE DEPENDENCIAS
  */
 const { World, setWorldConstructor, setDefaultTimeout } = require('@cucumber/cucumber');
 const config = require('../../config');
+const logger = require('../utils/logger');
 const DataProvider = require('../data/DataProvider');
 const { ScenarioContext } = require('../context/ScenarioContext');
 const { createDriver } = require('./driver');
 
 const LoginPage = require('../pages/LoginPage');
+const InventoryPage = require('../pages/InventoryPage');
+const CartPage = require('../pages/CartPage');
+const CheckoutInformationPage = require('../pages/CheckoutInformationPage');
+const CheckoutOverviewPage = require('../pages/CheckoutOverviewPage');
+const CheckoutCompletePage = require('../pages/CheckoutCompletePage');
 const HeaderComponent = require('../pages/components/HeaderComponent');
 const CartItemsComponent = require('../pages/components/CartItemsComponent');
 
@@ -30,6 +36,11 @@ class CustomWorld extends World {
     const deps = { config: this.config, logger: this.log };
     this.pages = Object.freeze({
       login: new LoginPage(this.driver, deps),
+      inventory: new InventoryPage(this.driver, deps),
+      cart: new CartPage(this.driver, deps),
+      checkoutInformation: new CheckoutInformationPage(this.driver, deps),
+      checkoutOverview: new CheckoutOverviewPage(this.driver, deps),
+      checkoutComplete: new CheckoutCompletePage(this.driver, deps),
       header: new HeaderComponent(this.driver, deps),
       cartItems: new CartItemsComponent(this.driver, deps),
     });

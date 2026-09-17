@@ -1,5 +1,5 @@
 'use strict';
-/** Page Object de la cabecera (visible en todas las páginas internas): título, carrito y menú. */
+/** Page Object de la cabecera: título, carrito y menú. */
 const { error } = require('selenium-webdriver');
 const BasePage = require('../BasePage');
 const { By, locator, dataTest } = require('../locator');
