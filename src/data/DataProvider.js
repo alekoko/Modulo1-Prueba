@@ -2,14 +2,8 @@
 /**
  * PATRÓN DATA-DRIVEN
  * ------------------
- * Única puerta de acceso a los datos de prueba (test-data/*.json).
- * Los features solo contienen CLAVES ("standard", "valid_customer", "multiples_productos");
- * este proveedor las traduce a los datos reales. Así un mismo escenario se ejecuta
- * con distintos datos cambiando la tabla Examples o el JSON, sin tocar código.
- *
- * archivo JSON por dominio: users, customers, catalog, messages.
- * "${VARIABLE:defecto}" variables de entorno.
- * error de claves disponibles
+ * datos de prueba (test-data/*.json).
+
  */
 const fs = require('fs');
 const path = require('path');

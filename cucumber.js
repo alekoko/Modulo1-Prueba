@@ -6,12 +6,12 @@ const config = require('./config');
 
 [config.paths.json, config.paths.html].forEach((dir) => fs.mkdirSync(dir, { recursive: true }));
 
-// Ruta relativa con "/" para "C:" de Windows en la sintaxis "formato:ruta"
+// Ruta relativa con "/" para no chocar con "C:" de Windows en la sintaxis "formato:ruta"
 const rel = (absolutePath) => path.relative(config.root, absolutePath).split(path.sep).join('/');
 
 const base = {
   paths: ['features/**/*.feature'],
-  require: ['src/support/world.js', 'src/support/hooks.js', 'src/steps/**/*.js'],
+  require: ['src/support/world.js', 'src/support/hooks.js', 'src/steps-definitions/**/*.js'],
   format: [
     'summary',
     `json:${rel(config.paths.json)}/cucumber-report.json`,

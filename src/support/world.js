@@ -1,0 +1,54 @@
+'use strict';
+/**
+ * PATRÓN CONTEXT OBJECT + INYECCIÓN DE DEPENDENCIAS
+ */
+const { World, setWorldConstructor, setDefaultTimeout } = require('@cucumber/cucumber');
+const config = require('../../config');
+const DataProvider = require('../data/DataProvider');
+const { ScenarioContext } = require('../context/ScenarioContext');
+const { createDriver } = require('./driver');
+
+const LoginPage = require('../pages/LoginPage');
+const HeaderComponent = require('../pages/components/HeaderComponent');
+const CartItemsComponent = require('../pages/components/CartItemsComponent');
+
+class CustomWorld extends World {
+  constructor(options) {
+    super(options);
+    this.config = config;
+    this.log = logger;
+    this.data = new DataProvider(config.paths.data);
+    this.context = new ScenarioContext();
+    this.scenarioName = '';
+    this.driver = null;
+    this.pages = null;
+  }
+
+  /** Abre el navegador e inyecta sus dependencias en cada Page Object. */
+  async openBrowser() {
+    this.driver = await createDriver(this.config, this.log);
+    const deps = { config: this.config, logger: this.log };
+    this.pages = Object.freeze({
+      login: new LoginPage(this.driver, deps),
+      header: new HeaderComponent(this.driver, deps),
+      cartItems: new CartItemsComponent(this.driver, deps),
+    });
+  }
+
+  async closeBrowser() {
+    if (!this.driver) return;
+    try {
+      await this.driver.quit();
+    } catch (err) {
+      this.log.warn(`Error al cerrar el navegador: ${err.message}`);
+    } finally {
+      this.driver = null;
+      this.pages = null;
+    }
+  }
+}
+
+setWorldConstructor(CustomWorld);
+setDefaultTimeout(config.timeouts.step);
+
+module.exports = { CustomWorld };
