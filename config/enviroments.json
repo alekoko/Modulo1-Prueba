@@ -1,0 +1,16 @@
+{
+  "qa": {
+    "baseUrl": "https://www.saucedemo.com",
+    "browser": { "name": "chrome", "headless": false, "width": 1920, "height": 1080 },
+    "timeouts": { "explicit": 10000, "pageLoad": 30000, "script": 15000, "step": 60000, "polling": 250 },
+    "retry": { "attempts": 3, "delayMs": 500, "driverAttempts": 3, "scenarioRetries": 1 },
+    "evidence": { "screenshotMode": "all", "saveAllToDisk": false }
+  },
+  "staging": {
+    "baseUrl": "https://www.saucedemo.com",
+    "browser": { "name": "chrome", "headless": true, "width": 1920, "height": 1080 },
+    "timeouts": { "explicit": 15000, "pageLoad": 45000, "script": 15000, "step": 90000, "polling": 300 },
+    "retry": { "attempts": 3, "delayMs": 1000, "driverAttempts": 3, "scenarioRetries": 2 },
+    "evidence": { "screenshotMode": "all", "saveAllToDisk": true }
+  }
+}

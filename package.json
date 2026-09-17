@@ -1,0 +1,15 @@
+{
+  "name": "modulo1-prueba",
+  "version": "1.0.0",
+  "description": "Framework BDD de automatización front-end para saucedemo.com con Selenium WebDriver + Cucumber (JavaScript)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Modulo1-Prueba"
+  },
+  "author": "Alejandra Barroso",
+  "license": "ISC"
+}
