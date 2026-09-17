@@ -1,0 +1,7 @@
+{
+  "valid_customer":      { "firstName": "Ale",  "lastName": "Test",  "postalCode": "01000" },
+  "valid_customer_2":    { "firstName": "Danny", "lastName": "Testerz", "postalCode": "64000" },
+  "missing_first_name":  { "firstName": "",      "lastName": "Tester",  "postalCode": "01000" },
+  "missing_last_name":   { "firstName": "Ale",  "lastName": "",       "postalCode": "01000" },
+  "missing_postal_code": { "firstName": "Ale",  "lastName": "Tester",  "postalCode": "" }
+}

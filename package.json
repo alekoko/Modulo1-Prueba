@@ -2,9 +2,32 @@
   "name": "modulo1-prueba",
   "version": "1.0.0",
   "description": "Framework BDD de automatización front-end para saucedemo.com con Selenium WebDriver + Cucumber (JavaScript)",
-  "main": "index.js",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "suite": "node scripts/run-suite.js",
+    "suite:smoke": "node scripts/run-suite.js --tags @smoke",
+    "suite:e2e": "node scripts/run-suite.js --tags @e2e",
+    "test": "cucumber-js",
+    "test:smoke": "cucumber-js --profile smoke",
+    "test:headless": "cross-env HEADLESS=true cucumber-js",
+    "test:parallel": "cross-env HEADLESS=true PARALLEL=3 cucumber-js",
+    "test:firefox": "cross-env BROWSER=firefox cucumber-js",
+    "test:rerun": "cucumber-js --profile rerun"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.0.1",
+    "@slack/web-api": "^7.5.0",
+    "archiver": "^7.0.1",
+    "chai": "^4.5.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
+    "multiple-cucumber-html-reporter": "^3.8.0",
+    "nodemailer": "^6.9.15",
+    "selenium-webdriver": "^4.25.0",
+    "winston": "^3.14.2"
   },
   "repository": {
     "type": "git",
