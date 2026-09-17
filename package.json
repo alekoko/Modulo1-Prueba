@@ -11,6 +11,7 @@
     "suite:smoke": "node scripts/run-suite.js --tags @smoke",
     "suite:e2e": "node scripts/run-suite.js --tags @e2e",
     "test": "cucumber-js",
+    "test:tc": "cucumber-js --tags",
     "test:smoke": "cucumber-js --profile smoke",
     "test:headless": "cross-env HEADLESS=true cucumber-js",
     "test:parallel": "cross-env HEADLESS=true PARALLEL=3 cucumber-js",
