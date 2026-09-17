@@ -9,7 +9,7 @@ const fs = require('fs');
 const path = require('path');
 
 const FILES = Object.freeze({
-  users: 'users.json',
+  user: 'user.json',
   customers: 'customers.json',
   catalog: 'catalog.json',
   messages: 'messages.json',
@@ -54,7 +54,7 @@ class DataProvider {
 
   /** @returns {{alias:string, username:string, password:string}} */
   getUser(alias) {
-    const user = pick(this.load(FILES.users), alias, FILES.users);
+    const user = pick(this.load(FILES.user), alias, FILES.user);
     return { alias, username: user.username ?? '', password: user.password ?? '' };
   }
 

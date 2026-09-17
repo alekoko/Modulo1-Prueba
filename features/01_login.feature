@@ -1,5 +1,5 @@
 @login @regression
-Feature: Módulo de Login
+Feature: Modulo de Login
   Como cliente de Swag Labs
   Quiero autenticarme en la tienda
   Para acceder al catálogo de productos

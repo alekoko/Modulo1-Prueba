@@ -11,7 +11,7 @@ const rel = (absolutePath) => path.relative(config.root, absolutePath).split(pat
 
 const base = {
   paths: ['features/**/*.feature'],
-  require: ['src/support/world.js', 'src/support/hooks.js', 'src/steps-definitions/**/*.js'],
+  require: ['src/support/world.js', 'src/support/hooks.js', 'src/step-definitions/**/*.js'],
   format: [
     'summary',
     `json:${rel(config.paths.json)}/cucumber-report.json`,

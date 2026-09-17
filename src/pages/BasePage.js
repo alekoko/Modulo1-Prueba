@@ -29,7 +29,7 @@ class BasePage {
     return null;
   }
 
-  /** Elemento que confirma que la página terminó de cargar. */
+  /** Elemento que confirma que la página termino de cargar. */
   get readyLocator() {
     return null;
   }
