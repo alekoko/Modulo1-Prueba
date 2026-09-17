@@ -1,0 +1,14 @@
+{
+  "taxRate": 0.08,
+  "productSets": {
+    "producto_unico": ["Sauce Labs Backpack"],
+    "multiples_productos": ["Sauce Labs Backpack", "Sauce Labs Bike Light", "Sauce Labs Bolt T-Shirt"],
+    "productos_especiales": ["Test.allTheThings() T-Shirt (Red)", "Sauce Labs Fleece Jacket"]
+  },
+  "sortOptions": {
+    "nombre A-Z": { "value": "az", "field": "name", "direction": "asc" },
+    "nombre Z-A": { "value": "za", "field": "name", "direction": "desc" },
+    "precio menor a mayor": { "value": "lohi", "field": "price", "direction": "asc" },
+    "precio mayor a menor": { "value": "hilo", "field": "price", "direction": "desc" }
+  }
+}

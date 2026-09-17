@@ -1,0 +1,34 @@
+services:
+  selenium:
+    # En equipos ARM (Apple Silicon) usar: seleniarm/standalone-chromium:latest
+    image: selenium/standalone-chrome:4.25.0
+    shm_size: 2gb
+    ports:
+      - "4444:4444"   # WebDriver / Grid UI
+      - "7900:7900"   # noVNC: ver la ejecución en http://localhost:7900 (password: secret)
+    environment:
+      SE_NODE_MAX_SESSIONS: ${PARALLEL:-2}
+      SE_NODE_OVERRIDE_MAX_SESSIONS: "true"
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:4444/status"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  tests:
+    build: .
+    depends_on:
+      selenium:
+        condition: service_healthy
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      SELENIUM_REMOTE_URL: http://selenium:4444/wd/hub
+      BROWSER: chrome
+      HEADLESS: "true"
+      PARALLEL: ${PARALLEL:-2}
+      TAGS: ${TAGS:-not @wip}
+    volumes:
+      - ./reports:/app/reports
+      - ./logs:/app/logs
