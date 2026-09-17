@@ -3,7 +3,7 @@ const BasePage = require('./BasePage');
 const { By, locator, dataTest, toSlug, xpathLiteral } = require('./locator');
 const { parseCurrency } = require('../utils/numbers');
 
-/** XPath de la tarjeta de un producto a partir de su nombre visible. */
+/** XPath de la tarjeta de un producto; de su nombre visible. */
 const cardByName = (name) =>
   `//div[contains(@class,'inventory_item_description')][.//div[contains(@class,'inventory_item_name') and normalize-space(.)=${xpathLiteral(name)}]]`;
 
@@ -13,7 +13,7 @@ const L = {
   prices: locator('Inventory.prices', dataTest('inventory-item-price'), By.css('.inventory_item_price')),
   sortSelect: locator('Inventory.sort', dataTest('product-sort-container'), By.css('select.product_sort_container')),
 
-  /* Selectores dinámicos: se construyen con el nombre del producto que viene del JSON */
+  /* Selectores dinámicos: con el nombre del producto que viene del JSON */
   addButton: (name) =>
     locator(
       `Inventory.add(${name})`,

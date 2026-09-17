@@ -17,7 +17,7 @@ class LoginPage extends BasePage {
     return L.submit;
   }
 
-  /** La ruta "/" coincide con cualquier URL, por eso solo se valida el formulario. */
+  /** La ruta "/" coincide con cualquier URL, solo se valida el formulario. */
   async waitUntilLoaded() {
     await this.waits.visible(L.submit);
   }
